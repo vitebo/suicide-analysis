@@ -1,23 +1,26 @@
 import requests
 from bs4 import BeautifulSoup
 
-URL = 'http://tabnet.datasus.gov.br/cgi/tabcgi.exe'
-PARAMS = 'sim/cnv/obt10SP.def'
-HEADERS = {
-    'user-agent': 'my-app'
-}
-
 
 class SuicideDataService:
 
     def __init__(self):
+        self.URL = 'http://tabnet.datasus.gov.br/cgi/tabcgi.exe'
+        self.PARAMS = 'sim/cnv/obt10SP.def'
+        self.HEADERS = {
+            'user-agent': 'my-app'
+        }
         self._create_default_data()
+        self._create_categories()
 
     def search(self):
-        request = requests.post(URL, params=PARAMS, data=self.data, headers=HEADERS)
+        request = requests.post(self.URL, params=self.PARAMS, data=self.data, headers=self.HEADERS)
         soup = BeautifulSoup(request.text, 'lxml')
         content = soup.find('pre')
         return content
+
+    def _create_categories(self):
+        self.data += '\n'.join([f'SCategoria_CID-10={i}&' for i in range(125, 150)])
 
     def _create_default_data(self):
         self.data = '''
@@ -33,31 +36,6 @@ class SuicideDataService:
         SRegião_Metropolitana_-_RIDE=TODAS_AS_CATEGORIAS__&
         SCapítulo_CID-10=TODAS_AS_CATEGORIAS__&
         SGrupo_CID-10=TODAS_AS_CATEGORIAS__&
-        SCategoria_CID-10=125&
-        SCategoria_CID-10=126&
-        SCategoria_CID-10=127&
-        SCategoria_CID-10=128&
-        SCategoria_CID-10=129&
-        SCategoria_CID-10=130&
-        SCategoria_CID-10=131&
-        SCategoria_CID-10=132&
-        SCategoria_CID-10=133&
-        SCategoria_CID-10=134&
-        SCategoria_CID-10=135&
-        SCategoria_CID-10=136&
-        SCategoria_CID-10=137&
-        SCategoria_CID-10=138&
-        SCategoria_CID-10=139&
-        SCategoria_CID-10=140&
-        SCategoria_CID-10=141&
-        SCategoria_CID-10=142&
-        SCategoria_CID-10=143&
-        SCategoria_CID-10=144&
-        SCategoria_CID-10=145&
-        SCategoria_CID-10=146&
-        SCategoria_CID-10=147&
-        SCategoria_CID-10=148&
-        SCategoria_CID-10=149&
         SCausa_-_CID-BR-10=TODAS_AS_CATEGORIAS__&
         SCausa_mal_definidas=TODAS_AS_CATEGORIAS__&
         SFaixa_Etária=TODAS_AS_CATEGORIAS__&
@@ -71,3 +49,4 @@ class SuicideDataService:
         SLocal_ocorrência=TODAS_AS_CATEGORIAS__&
         formato=prn&
         '''
+        self._create_categories()

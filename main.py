@@ -61,6 +61,3 @@ r = requests.post(url, params=params, data=data, headers=headers)
 soup = BeautifulSoup(r.content, 'lxml')
 table = soup.find('tbody')
 rows = table.find_all('tr')
-for row in rows:
-
-print(table)

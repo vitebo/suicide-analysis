@@ -1,4 +1,5 @@
 import requests
+from bs4 import BeautifulSoup
 
 url = 'http://tabnet.datasus.gov.br/cgi/tabcgi.exe'
 params = 'sim/cnv/obt10SP.def'
@@ -57,4 +58,9 @@ SLocal_ocorrência=TODAS_AS_CATEGORIAS__&
 formato=table&
 '''
 r = requests.post(url, params=params, data=data, headers=headers)
-print(r.content)
+soup = BeautifulSoup(r.content, 'lxml')
+table = soup.find('tbody')
+rows = table.find_all('tr')
+for row in rows:
+
+print(table)

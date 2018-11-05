@@ -5,12 +5,12 @@ from bs4 import BeautifulSoup
 class SuicideDataService:
 
     def __init__(self, options):
-        self.URL = 'http://tabnet.datasus.gov.br/cgi/tabcgi.exe'
-        self.PARAMS = 'sim/cnv/obt10SP.def'
-        self.HEADERS = {
+        self.__URL = 'http://tabnet.datasus.gov.br/cgi/tabcgi.exe'
+        self.__PARAMS = 'sim/cnv/obt10SP.def'
+        self.__HEADERS = {
             'user-agent': 'my-app'
         }
-        self.filters_default = {
+        self.__filters_default = {
             'Linha': 'Município',
             'Coluna': '--Não-Ativa--',
             'Incremento': 'Óbitos_p/Residênc',
@@ -36,30 +36,33 @@ class SuicideDataService:
             'SLocal_ocorrência': 'TODAS_AS_CATEGORIAS__',
             'formato': 'prn'
         }
-        print(self._create_data(options))
+        print(self.__create_data(options))
 
     def search(self, options=None):
         if options is None:
             options = {}
-        request = requests.post(self.URL, params=self.PARAMS, data=self._create_data(options), headers=self.HEADERS)
+        data = self.__create_data(options)
+        request = requests.post(self.__URL, params=self.__PARAMS, headers=self.__HEADERS, data=data)
         soup = BeautifulSoup(request.text, 'lxml')
         return soup.find('pre')
 
-    def _create_filter_categories(self):
+    @staticmethod
+    def __create_filter_categories():
         return ''.join([f'SCategoria_CID-10={i}&' for i in range(125, 150)])
 
-    def _create_filter(self, options, key):
+    def __create_filter(self, options, key):
         if key not in options:
-            return f'{key}={self.filters_default[key]}&'
+            return f'{key}={self.__filters_default[key]}&'
         if not isinstance(options[key], list):
             return f'{key}={options[key]}&'
         return ''.join([f'{key}={value}&' for value in options[key]])
 
-    def _format_to_two_decimal_place(self, number):
+    @staticmethod
+    def __format_to_two_decimal_place(number):
         return f'0{number}' if number < 10 else number
 
-    def _create_data(self, options=None):
+    def __create_data(self, options=None):
         if options is None:
             options = {}
-        data = ''.join([self._create_filter(options, key) for key in self.filters_default])
-        return data + self._create_filter_categories()
+        data = ''.join([self.__create_filter(options, key) for key in self.__filters_default])
+        return data + self.__create_filter_categories()

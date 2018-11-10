@@ -1,17 +1,17 @@
 # Suicide Data Service
-Um serviço com o objetivo de fornecer uma interface de alto nivel para efetuar buscas sobre suicidio no
+Um serviço com o objetivo de fornecer uma interface de alto nivel para efetuar buscas sobre **mortalidade - 1996 a 2016, pela CID-10** utilizando o site do
 [Data SUS](http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sim/cnv/obt10SP.def).
 
 ## Métodos
 Lista dos métodos públicos do serviço
 
 ### Search
-Efetua uma busca no **DATA SUS** de acordo com os filtros passados, e retorna a tabela separando as colunas por ``;``
+Efetua uma busca no **DATA SUS** de acordo com os filtros passados, e retorna o resultado em um arquivo *csv*
 
 #### Parâmetros
-| params  | type | required |
-|---------|------|----------|
-| options | dict | false    |
+| params  | type | required | return      |
+|---------|------|----------|-------------|
+| options | dict | false    | StringIO    |
 
 ##### options
 Parâmetro opcional para adicionar filtros para a busca.

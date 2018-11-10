@@ -1,10 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
+from io import StringIO
 
 
 class SuicideDataService:
 
-    def __init__(self, options):
+    def __init__(self):
         self.__URL = 'http://tabnet.datasus.gov.br/cgi/tabcgi.exe'
         self.__PARAMS = 'sim/cnv/obt10SP.def'
         self.__HEADERS = {
@@ -36,17 +37,13 @@ class SuicideDataService:
             'SLocal_ocorrência': 'TODAS_AS_CATEGORIAS__',
             'formato': 'prn'
         }
-        print(self.__create_data(options))
 
     def search(self, options=None):
         data = self.__create_data(options)
         request = requests.post(self.__URL, params=self.__PARAMS, headers=self.__HEADERS, data=data)
         soup = BeautifulSoup(request.text, 'lxml')
-        return soup.find('pre')
-
-    @staticmethod
-    def __create_filter_categories():
-        return ''.join([f'SCategoria_CID-10={i}&' for i in range(125, 150)])
+        content = soup.find('pre')
+        return StringIO(content.text[:-3])
 
     def __create_filter(self, options, key):
         if key not in options:
@@ -62,5 +59,4 @@ class SuicideDataService:
     def __create_data(self, options=None):
         if options is None:
             options = {}
-        data = ''.join([self.__create_filter(options, key) for key in self.__filters_default])
-        return data + self.__create_filter_categories()
+        return ''.join([self.__create_filter(options, key) for key in self.__filters_default])

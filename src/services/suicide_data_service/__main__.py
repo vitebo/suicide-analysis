@@ -1,4 +1,5 @@
-from src.core.suicide_data_service import SuicideDataService
+from model import SuicideDataService
+
 
 service = SuicideDataService()
 print(service.search().read())

@@ -48,7 +48,7 @@ class SuicideDataService:
     def __create_filter(self, options, key):
         if key not in options:
             return f'{key}={self.__filters_default[key]}&'
-        if not isinstance(options[key], list):
+        if type(options[key]) == str:
             return f'{key}={options[key]}&'
         return ''.join([f'{key}={value}&' for value in options[key]])
 

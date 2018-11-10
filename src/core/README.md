@@ -16,30 +16,33 @@ Efetua uma busca no **DATA SUS** de acordo com os filtros passados, e retorna a 
 ##### options
 Parâmetro opcional para adicionar filtros para a busca.
 Options é um **dict**, e as sus possiveis **keys** para os filtros são:
-- Linha
-- Coluna
-- Incremento
-- Arquivos
-- SMunicípio
-- SRegião_de_Saúde_(CIR)
-- SMacrorregião_de_Saúde
-- SDivisão_administ_estadual
-- SMicrorregião_IBGE
-- SRegião_Metropolitana_-_RIDE
-- SCapítulo_CID-10
-- SGrupo_CID-10
-- SCategoria_CID-10
-- SCausa_-_CID-BR-10
-- SCausa_mal_definidas
-- SFaixa_Etária
-- SFaixa_Etária_OPS
-- SFaixa_Etária_det
-- SFx.Etária_Menor_1A
-- SSexo
-- SCor/raça
-- SEscolaridade
-- SEstado_civil
-- SLocal_ocorrência
+
+| keys                         | type     | default                 |
+|------------------------------|----------|-------------------------|
+| Linha                        | str      | 'Município'             |
+| Coluna                       | str      | '--Não-Ativa--'         |
+| Incremento                   | str/list | 'Óbitos_p/Residênc'     |
+| Arquivos                     | str/list | 'obtsp16.dbf'           |
+| SMunicípio                   | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SRegião_de_Saúde_(CIR)       | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SMacrorregião_de_Saúde       | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SDivisão_administ_estadual   | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SMicrorregião_IBGE           | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SRegião_Metropolitana_-_RIDE | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SCapítulo_CID-10             | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SGrupo_CID-10                | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SCategoria_CID-10            | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SCausa_-_CID-BR-10           | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SCausa_mal_definidas         | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SFaixa_Etária                | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SFaixa_Etária_OPS            | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SFaixa_Etária_det            | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SFx.Etária_Menor_1A          | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SSexo                        | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SCor/raça                    | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SEscolaridade                | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SEstado_civil                | str/list | 'TODAS_AS_CATEGORIAS__' |
+| SLocal_ocorrência            | str/list | 'TODAS_AS_CATEGORIAS__' |
 
 ###### Linha
 Define oque será exibido na linha da tabela 
@@ -100,7 +103,7 @@ Define oque será exibido na coluna da tabela
 - 'Local_ocorrência'
 
 ###### Incremento
-- 'Incremento'
+- 'Óbitos_p/Residênc'
 - 'Óbitos_p/Ocorrênc'
 
 ###### Arquivos

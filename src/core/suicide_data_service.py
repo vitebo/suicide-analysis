@@ -39,8 +39,6 @@ class SuicideDataService:
         print(self.__create_data(options))
 
     def search(self, options=None):
-        if options is None:
-            options = {}
         data = self.__create_data(options)
         request = requests.post(self.__URL, params=self.__PARAMS, headers=self.__HEADERS, data=data)
         soup = BeautifulSoup(request.text, 'lxml')

@@ -29,7 +29,7 @@ class MortalityDataService:
             return f'{key}={options[key]}&'
         return ''.join([f'{key}={value}&' for value in options[key]])
 
-    def __create_data(self, options=None):
+    def __create_data(self, options):
         if options is None:
             options = {}
         return ''.join([self.__create_filter(options, key) for key in self.__filters_default])

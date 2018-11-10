@@ -1,9 +1,10 @@
-import requests
-from bs4 import BeautifulSoup
 from io import StringIO
 
+import requests
+from bs4 import BeautifulSoup
 
-class SuicideDataService:
+
+class MortalityDataService:
 
     def __init__(self):
         self.__URL = 'http://tabnet.datasus.gov.br/cgi/tabcgi.exe'

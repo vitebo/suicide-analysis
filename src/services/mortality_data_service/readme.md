@@ -1,6 +1,6 @@
-# Suicide Data Service
+# Mortality Data Service
 Um serviço com o objetivo de fornecer uma interface de alto nivel para efetuar buscas sobre **mortalidade - 1996 a 2016, pela CID-10** utilizando o site do
-[Data SUS](http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sim/cnv/obt10SP.def).
+**[Data SUS](http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sim/cnv/obt10SP.def)**.
 
 ## Métodos
 Lista dos métodos públicos do serviço

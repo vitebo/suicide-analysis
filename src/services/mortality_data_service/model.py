@@ -29,10 +29,6 @@ class MortalityDataService:
             return f'{key}={options[key]}&'
         return ''.join([f'{key}={value}&' for value in options[key]])
 
-    @staticmethod
-    def __format_to_two_decimal_place(number):
-        return f'0{number}' if number < 10 else number
-
     def __create_data(self, options=None):
         if options is None:
             options = {}

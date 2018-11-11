@@ -16,7 +16,6 @@ class MortalityDataService(object):
 
     def search(self, options=None):
         data = self.__create_data(options)
-        print(data)
         request = requests.post(self.__URL, params=self.__PARAMS, headers=self.__HEADERS, data=data)
         soup = BeautifulSoup(request.text, 'lxml')
         content = soup.find('pre')
@@ -38,7 +37,8 @@ class MortalityDataService(object):
             return f'{key}={filter_value}&'
         return ''.join([f'{key}={value}&' for value in filter_value])
 
-    def __create_custom_filter(self, options, key):
+    @staticmethod
+    def __create_custom_filter(options, key):
         filter_value = options[key]
         if type(filter_value) == str:
             return f'{key}={filter_value}&'

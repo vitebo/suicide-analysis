@@ -25,7 +25,7 @@ class Filters(object):
         return {
             'Linha':                        'Município',
             'Coluna':                       '--Não-Ativa--',
-            'Incremento':                   ['Óbitos_p/Residênc', 'Óbitos_p/Ocorrênc'],
+            'Incremento':                   'Óbitos_p/Residênc',
             'Arquivos':                     self.__FILES_YEARS_AVAILABLE,
             'SMunicípio':                   'TODAS_AS_CATEGORIAS__',
             'SRegião_de_Saúde_(CIR)':       'TODAS_AS_CATEGORIAS__',

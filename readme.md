@@ -1,6 +1,6 @@
 # Definindo oque sera analisado
 
-1. O ano com maior indice de suicidio infantil desde 1998 até 2016
+1. O ano com maior indice
 2. O metodo mais usado
 
 ## Por faixa etaria:

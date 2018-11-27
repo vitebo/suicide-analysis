@@ -1,6 +1,6 @@
 # Definindo oque sera analisado
 
-1. O ano com maior indice
+1. Obter o ano com maior indice de suicidios
 2. O metodo mais usado
 
 ## Por faixa etaria:

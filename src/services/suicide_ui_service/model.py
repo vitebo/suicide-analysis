@@ -1,4 +1,5 @@
 from services.mortality_data_service.model import MortalityDataService
+import matplotlib.pyplot as plt
 from commons import utils
 import pandas
 
@@ -9,30 +10,31 @@ class SuicideUiService(object):
         pandas.set_option('display.max_rows', None)
         pandas.set_option('display.max_columns', None)
         pandas.set_option('display.max_colwidth', -1)
-        pandas.set_option("display.colheader_justify", 'left')
+        pandas.set_option('display.colheader_justify', 'left')
         self.SERVICE = MortalityDataService()
         self.OPTIONS_DEFAULT = {
             'SGrupo_CID-10': '245'
         }
 
-    def get_year_with_higher_index(self):
+    def get_most_used_method(self):
         data = self.__search({
-            'Linha': 'Ano_do_Óbito',
-            'Coluna': 'Capítulo_CID-10'
+            'Linha': 'Categoria_CID-10'
         })
-        table = data.drop(21, 0).drop(columns=['Cap XX'])
-        return table.plot(x='Ano do Óbito', kind='bar', title='Hitórico de suicidios por ano')
-
-    def get_most_used_method_in_2015(self):
-        data = self.__search({
-            'Linha': 'Categoria_CID-10',
-            'Coluna': 'Ano_do_Óbito',
-            'Arquivos': 'obtsp15.dbf'
-        })
-        table = data.drop(24, 0).drop(columns=['Total'])
+        table = data.drop(25, 0)
         table = table.set_index('Categoria CID-10')
         table.index = [f'X {label[1:3]}' for label in table.index]
-        return table.plot(y='2015', kind='bar')
+        table.columns = ['Total']
+        return table.plot(kind='bar')
+
+    def get_year_with_higher_x70(self):
+        data = self.__search({
+            'Linha': 'Ano_do_Óbito',
+            'Coluna': 'Capítulo_CID-10',
+            'SCategoria_CID-10': '1835'
+        })
+        data = data.drop(21, 0).drop(columns=['Cap XX'])
+        data = data.set_index('Ano do Óbito')
+        return data.plot(kind='bar', title='Enforcamento, estrangulamento e sufocação por ano')
 
     def get_sex_with_highest_index_using_x70_in_2015(self):
         data = self.__search({
@@ -45,7 +47,6 @@ class SuicideUiService(object):
         return table.plot(kind='bar', x='Sexo')
 
     def get_description_x60_x84(self):
-        years = utils.get_years_available()
         data = {
             'Legenda': list(f'X {i}' for i in range(60, 85)),
             'Descrição': [
@@ -79,7 +80,6 @@ class SuicideUiService(object):
         data_frame = pandas.DataFrame(data=data)
         data_frame = data_frame.style.set_properties(**{'text-align': 'left'})
         return data_frame
-
 
     def __search(self, options):
         options.update(self.OPTIONS_DEFAULT)

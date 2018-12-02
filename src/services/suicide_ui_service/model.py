@@ -34,7 +34,7 @@ class SuicideUiService(object):
         })
         data = data.drop(21, 0).drop(columns=['Cap XX'])
         data = data.set_index('Ano do Óbito')
-        return data.plot(kind='bar', title='Enforcamento, estrangulamento e sufocação por ano')
+        return data.plot(kind='line', title='Enforcamento, estrangulamento e sufocação por ano')
 
     def get_sex_with_highest_index_using_x70_in_2015(self):
         data = self.__search({
@@ -44,7 +44,8 @@ class SuicideUiService(object):
         })
         data = data.drop(2, 0)
         data.columns = ['Sexo', 'Total']
-        return data.plot(kind='bar', x='Sexo')
+        df = pandas.DataFrame({'Sexo': data['Total'].tolist()}, index=['Masculino', 'Feminino'])
+        return df.plot(kind='pie', subplots=True)
 
     def get_age_range_x70_in_2015(self):
         data = self.__search({

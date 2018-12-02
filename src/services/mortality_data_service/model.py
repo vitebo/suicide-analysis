@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from io import StringIO
-from services.mortality_data_service.filters import Filters
+from src.services.mortality_data_service.filters import Filters
 
 
 class MortalityDataService(object):

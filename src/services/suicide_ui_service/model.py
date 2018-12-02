@@ -1,6 +1,6 @@
-from services.mortality_data_service.model import MortalityDataService
+from src.services.mortality_data_service.model import MortalityDataService
 import matplotlib.pyplot as plt
-from commons import utils
+from src.commons import utils
 import pandas
 
 

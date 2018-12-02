@@ -21,6 +21,7 @@ Você pode visualizar a análise [acessando esse link](https://fatec-noobs.githu
     ├── requirements.txt
     ├── suicide-analysis.ipynb
     ├── readme.md
+    ├── license.md
     └── .gitignore
     
     
@@ -47,3 +48,9 @@ você deve possuir a versão do python 3.7.1 instalada
     ````bash
     jupyter notebook
     ````
+    
+    
+## License
+
+[MIT License](https://github.com/fatec-noobs/suicide-analysis/blob/master/license.md) ©
+[Fatec Noobs](https://github.com/fatec-noobs)

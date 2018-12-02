@@ -34,7 +34,7 @@ class SuicideUiService(object):
         })
         data = data.drop(21, 0).drop(columns=['Cap XX'])
         data = data.set_index('Ano do Óbito')
-        return data.plot(kind='line', title='Enforcamento, estrangulamento e sufocação por ano')
+        return data.plot()
 
     def get_sex_with_highest_index_using_x70_in_2015(self):
         data = self.__search({

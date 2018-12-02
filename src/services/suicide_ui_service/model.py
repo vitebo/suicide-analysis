@@ -20,11 +20,11 @@ class SuicideUiService(object):
         data = self.__search({
             'Linha': 'Categoria_CID-10'
         })
-        table = data.drop(25, 0)
-        table = table.set_index('Categoria CID-10')
-        table.index = [f'X {label[1:3]}' for label in table.index]
-        table.columns = ['Total']
-        return table.plot(kind='bar')
+        data = data.drop(25, 0)
+        data = data.set_index('Categoria CID-10')
+        data.index = [f'X {label[1:3]}' for label in data.index]
+        data.columns = ['Total']
+        return data.plot(kind='bar')
 
     def get_year_with_higher_x70(self):
         data = self.__search({
@@ -42,12 +42,25 @@ class SuicideUiService(object):
             'Arquivos': 'obtsp15.dbf',
             'SCategoria_CID-10': '1835',
         })
-        table = data.drop(2, 0)
-        table.columns = ['Sexo', 'Total']
-        return table.plot(kind='bar', x='Sexo')
+        data = data.drop(2, 0)
+        data.columns = ['Sexo', 'Total']
+        return data.plot(kind='bar', x='Sexo')
 
-    def get_description_x60_x84(self):
-        data = {
+    def get_age_range_x70_in_2015(self):
+        data = self.__search({
+            'Linha': 'Faixa_Etária',
+            'Arquivos': 'obtsp15.dbf',
+            'SCategoria_CID-10': '1835',
+            'SSexo': '1'
+        })
+        data = data.drop(10, 0)
+        data.columns = ['Faixa etária', 'Total']
+        data = data.set_index('Faixa etária')
+        return data.plot(kind='barh')
+
+    @staticmethod
+    def get_description_x60_x84():
+        content = {
             'Legenda': list(f'X {i}' for i in range(60, 85)),
             'Descrição': [
                 'Analgésicos, antipiréticos e anti-reumáticos',
@@ -77,9 +90,9 @@ class SuicideUiService(object):
                 'Meios não especificados'
             ]
         }
-        data_frame = pandas.DataFrame(data=data)
-        data_frame = data_frame.style.set_properties(**{'text-align': 'left'})
-        return data_frame
+        data = pandas.DataFrame(data=content)
+        data = data.style.set_properties(**{'text-align': 'left'})
+        return data
 
     def __search(self, options):
         options.update(self.OPTIONS_DEFAULT)

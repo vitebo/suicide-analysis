@@ -1,23 +1,56 @@
-# Definindo oque sera analisado
+# Suicide Analysis 
 
-1. Obter o ano com maior indice de suicidios
-2. O metodo mais usado
+*Análise de suicídios utilizando pandas*
 
-## Por faixa etaria:
-- de 5 a 14 anos
-- de 15 a 24 anos
-- de 25 a 34 anos
-- de 35 a 44 anos
-- de 45 a 54 anos
-- de 55 a 64 anos
-- de 65 a 74 anos
-- 75 ou mais
-- idade ignorada 
+Você pode visualizar a análise [acessando esse link](https://fatec-noobs.github.io/suicide-analysis/)
 
-### Tabela 1:
-Se o indice de suicidio ao passar dos anos aumenta
-ou diminui em cada faixa etaria 
 
-### Tabela 2:
-Qual metodo mais aumenta e qual metodo diminui ao passar dos anos
+## Estrutura do projeto
 
+    .
+    ├── src/
+    |   ├── commons/
+    |   |   └── utils.py
+    |   └── services/
+    |       ├── mortality_data_service/
+    |       |   ├── readme.md
+    |       |   ├── model.py
+    |       |   └── filters.py
+    |       └── suicide_ui_service/
+    |           └── model.py
+    ├── requirements.txt
+    ├── suicide-analysis.ipynb
+    ├── readme.md
+    ├── license.md
+    └── .gitignore
+    
+    
+## Rodando o projeto
+
+você deve possuir a versão do python 3.7.1 instalada
+
+1. clone esse repositório
+    ````bash
+    git clone git@github.com:fatec-noobs/suicide-analysis.git
+    ````
+
+2. acesse a pasta do projeto
+    ````bash
+    cd suicide-analysis
+    ````
+
+3. instale as depêndencias do projeto
+    ````bash
+    pip install -r requirements.txt
+    ````
+   
+4. rode o jupyter notebook
+    ````bash
+    jupyter notebook
+    ````
+    
+    
+## License
+
+[MIT License](https://github.com/fatec-noobs/suicide-analysis/blob/master/license.md) ©
+[Fatec Noobs](https://github.com/fatec-noobs)

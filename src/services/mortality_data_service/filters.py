@@ -1,3 +1,6 @@
+from commons import utils
+
+
 class Filters(object):
 
     def __init__(self):
@@ -9,17 +12,8 @@ class Filters(object):
         return self.__default
 
     def __make_files_years_available(self):
-        years = self.__make_years_available()
+        years = utils.get_years_available()
         return list(f'obtsp{year}.dbf' for year in years)
-
-    def __make_years_available(self):
-        return self.__make_years_for_range(00, 17) + self.__make_years_for_range(96, 100)
-
-    def __make_years_for_range(self, start, end):
-        return list(self.__format_to_two_decimal_place(year) for year in range(start, end))
-
-    def __format_to_two_decimal_place(self, number):
-        return f'0{number}' if number < 10 else number
 
     def __get_filters_default(self):
         return {

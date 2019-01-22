@@ -2,7 +2,7 @@
 
 *Análise de suicídios utilizando pandas*
 
-Você pode visualizar a análise [acessando esse link](https://fatec-noobs.github.io/suicide-analysis/)
+Você pode visualizar a análise [acessando esse link](https://fatec-noobs.github.io/suicide_analysis/)
 
 
 ## Estrutura do projeto

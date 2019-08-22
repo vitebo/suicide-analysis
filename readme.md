@@ -2,7 +2,7 @@
 
 *Análise de suicídios utilizando pandas*
 
-Você pode visualizar a análise [acessando esse link](https://fatec-noobs.github.io/suicide_analysis/)
+Você pode visualizar a análise [acessando esse link](https://vitebo.github.io/suicide_analysis/)
 
 
 ## Estrutura do projeto
@@ -53,4 +53,4 @@ você deve possuir a versão do python 3.7.1 instalada
 ## License
 
 [MIT License](https://github.com/fatec-noobs/suicide-analysis/blob/master/license.md) ©
-[Fatec Noobs](https://github.com/fatec-noobs)
+[vitebo](https://github.com/vitebo)

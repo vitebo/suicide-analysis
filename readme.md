@@ -2,7 +2,7 @@
 
 *Análise de suicídios utilizando pandas*
 
-Você pode visualizar a análise [acessando esse link](https://vitebo.github.io/suicide_analysis/)
+Você pode visualizar a análise [acessando esse link](https://vitebo.github.io/suicide-analysis/)
 
 
 ## Estrutura do projeto
